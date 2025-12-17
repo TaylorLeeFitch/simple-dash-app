@@ -108,7 +108,10 @@ def update_tree_map(year_):
 
     filter_ = df.year == year_
 
-    fig = px.treemap( df[filter_], path=[px.Constant("world"), 'continent', 'country'], values='gdpPercap')
+    fig = px.treemap( df[filter_], 
+                     path=[px.Constant("world"), 'continent', 'country'], 
+                     values='gdpPercap',
+                     title=f"GDP of the World {year_}")
 
     # formatting the treemap 
     fig.update_layout(margin = dict(t=50, l=25, r=25, b=25))
