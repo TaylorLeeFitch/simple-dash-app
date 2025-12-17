@@ -10,7 +10,7 @@ app = Dash()
 
 # Layout consists of Title, dropdown and graph
 app.layout = [
-    html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}),
+    html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
     dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
     dcc.Graph(id='graph-content')
 ]
@@ -43,6 +43,11 @@ below it's called update_graph
 )
 # value from the drop down specified in the input
 def update_graph(value):
+    """
+    Docstring for update_graph
+    
+    :param value: Description
+    """
 
     # filter dataframe by value 
     dff = df[df.country==value]
@@ -51,6 +56,22 @@ def update_graph(value):
     ln_plt_fig = px.line(dff, x='year', y='pop')
 
     return ln_plt_fig
+
+# make a new dropdown that changes the title 
+@callback(
+    Output('graph-title', 'children'),
+    Input('dropdown-selection', 'value')
+)
+def update_title(value):
+    """
+    Docstring for update_title
+    
+    :param value: Description
+    """
+
+    # make a new string 
+    new_str = f"Population of {value} between 1950-2007"
+    return new_str
 
 if __name__ == '__main__':
     app.run(debug=True)
