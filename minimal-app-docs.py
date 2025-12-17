@@ -6,7 +6,7 @@ import pandas as pd
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
 
 # make pivot table 
-pop_pivot_df = pd.pivot_table(df,index='year', columns='country', values='pop') 
+pop_pivot_df = pd.read_csv('data/population-data.csv')
 
 # instantiating the dash app 
 app = Dash()
