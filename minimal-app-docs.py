@@ -87,5 +87,11 @@ def update_title(value):
     new_str = f"Population of {value} between 1950-2007"
     return new_str
 
+
+# Exercise: Write a callback that makes our bar chart that we made in collab 
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
