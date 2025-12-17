@@ -19,9 +19,12 @@ app.layout = [
                  ['United States', 'France'], 
                  placeholder="Select Countries..",
                  multi= True
-                 )
+                 ),
 
-    # Exercise : add another drop down to select a year
+    # Exercise : add another drop down to select a year 
+    dcc.Dropdown(df.year.unique(), 
+                 2007, 
+                 placeholder='Select Year...')
 ]
 
 """
