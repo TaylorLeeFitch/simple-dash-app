@@ -12,7 +12,16 @@ app = Dash()
 app.layout = [
     html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
     dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
-    dcc.Graph(id='graph-content')
+    dcc.Graph(id='graph-content'),
+
+    # second graphic  
+    dcc.Dropdown(df.country.unique(), 
+                 ['United States', 'France'], 
+                 placeholder="Select Countries..",
+                 multi= True
+                 )
+
+    # Exercise : add another drop down to select a year
 ]
 
 """
