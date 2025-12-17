@@ -3,16 +3,16 @@
 
 ## Install App 
 
-## 1 Create Python Virtual Env 
+## Create Python Virtual Env 
 ```
 python3 -m venv venv
 ```
 
-## 2 activate environment 
+## Activate environment 
 ```
 source venv/bin/activate
 ```
-
+## Install dependencies
 ```
 $ (venv) pip install -r requirements.txt
 ```
