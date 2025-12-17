@@ -36,7 +36,8 @@ app.layout = [
     dcc.Graph(id='graph-content-1'),
     dd2,
     dd3,
-    dcc.Graph(id='graph-content-2')
+    dcc.Graph(id='graph-content-2'),
+    dcc.Graph(id="graph-content-3")
 ]
 
 # CALLBACKS
@@ -98,6 +99,21 @@ def update_graph2(countries_, year_):
 
 # Exercise: Add another call back / graph for GDP percentage
 # https://plotly.com/python/basic-charts/, pick a basic chart 
+
+@callback(
+    Output('graph-content-3', 'figure'),
+    Input('dd-year-sel-1', 'value')
+)
+def update_tree_map(year_):
+
+    filter_ = df.year == year_
+
+    fig = px.treemap( df[filter_], path=[px.Constant("world"), 'continent', 'country'], values='gdpPercap')
+
+    # formatting the treemap 
+    fig.update_layout(margin = dict(t=50, l=25, r=25, b=25))
+
+    return fig
 
 if __name__ == '__main__':
     app.run(debug=True)
