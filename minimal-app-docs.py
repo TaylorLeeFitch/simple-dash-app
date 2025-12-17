@@ -12,7 +12,7 @@ app = Dash()
 app.layout = [
     html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
     dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
-    dcc.Graph(id='graph-content'),
+    dcc.Graph(id='graph-content-1'),
 
     # second graphic  
     dcc.Dropdown(df.country.unique(), 
@@ -24,7 +24,9 @@ app.layout = [
     # Exercise : add another drop down to select a year 
     dcc.Dropdown(df.year.unique(), 
                  2007, 
-                 placeholder='Select Year...')
+                 placeholder='Select Year...'),
+    dcc.Graph(id='graph-content-2')
+    
 ]
 
 """
@@ -50,7 +52,7 @@ below it's called update_graph
 """
 
 @callback(
-    Output('graph-content', 'figure'),
+    Output('graph-content-1', 'figure'),
     Input('dropdown-selection', 'value')
 )
 # value from the drop down specified in the input
