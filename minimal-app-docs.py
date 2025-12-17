@@ -126,8 +126,7 @@ def update_graph2(countries_, year_):
     return bar_chart
 
 
-
-
+# Exercise: Refactor code to update the title for the year in the bar chart
 
 
 
