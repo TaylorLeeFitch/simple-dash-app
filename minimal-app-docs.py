@@ -13,7 +13,7 @@ app = Dash()
 
 # Layout consists of Title, dropdown and graph
 app.layout = [
-    html.H1(children='Title of Dash App', style={'textAlign':'center'}),
+    html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}),
     dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
     dcc.Graph(id='graph-content')
 ]
