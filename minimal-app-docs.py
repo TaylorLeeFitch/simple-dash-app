@@ -31,7 +31,7 @@ dd3 = dcc.Dropdown(df.year.unique(),
 
 # LAYOUT
 app.layout = [
-    html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
+    html.H1(children='Population Stats: 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
     dd1,
     dcc.Graph(id='graph-content-1'),
     dd2,
@@ -57,25 +57,14 @@ def update_graph(value):
     dff = df[df.country==value]
 
     # make plotply lineplot 
-    ln_plt_fig = px.line(dff, x='year', y='pop')
+    ln_plt_fig = px.line(dff, 
+                    x='year', 
+                    y='pop', 
+                    title=f"Population of {value} between 1950-2007")
 
     return ln_plt_fig
 
-# make a new dropdown that changes the title 
-@callback(
-    Output('graph-title', 'children'),
-    Input('dd-country-sel-1', 'value')
-)
-def update_title(value):
-    """
-    Docstring for update_title
-    
-    :param value: Description
-    """
 
-    # make a new string 
-    new_str = f"Population of {value} between 1950-2007"
-    return new_str
 
 
 # Exercise: Write a callback that makes our bar chart that we made in collab 
@@ -105,9 +94,6 @@ def update_graph2(countries_, year_):
                     
                  },)
     return bar_chart
-
-
-# Exercise: Refactor code to update the title for the year in the bar chart
 
 if __name__ == '__main__':
     app.run(debug=True)
