@@ -11,20 +11,24 @@ app = Dash()
 # Layout consists of Title, dropdown and graph
 app.layout = [
     html.H1(children='Population from 1950 - 2007', style={'textAlign':'center'}, id="graph-title"),
-    dcc.Dropdown(df.country.unique(), 'Canada', id='dropdown-selection'),
+    dcc.Dropdown(df.country.unique(), 'Canada', id='dd-country-sel-1'),
     dcc.Graph(id='graph-content-1'),
 
     # second graphic  
     dcc.Dropdown(df.country.unique(), 
-                 ['United States', 'France'], 
-                 placeholder="Select Countries..",
-                 multi= True
-                 ),
+                ['United States', 'France'], 
+                placeholder="Select Countries..",
+                id='dd-country-sel-2',
+                multi= True
+                ),
 
     # Exercise : add another drop down to select a year 
     dcc.Dropdown(df.year.unique(), 
-                 2007, 
-                 placeholder='Select Year...'),
+                2007, 
+                placeholder='Select Year...',
+                id='dd-year-sel-1',
+                ),
+
     dcc.Graph(id='graph-content-2')
     
 ]
@@ -89,7 +93,10 @@ def update_title(value):
 
 
 # Exercise: Write a callback that makes our bar chart that we made in collab 
-
+@callback(
+    Output('graph-content-2', 'figure'),
+    Input('dropdown-selection', 'value')
+)
 
 
 
