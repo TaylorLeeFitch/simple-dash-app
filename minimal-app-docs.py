@@ -4,7 +4,7 @@ import pandas as pd
 
 # DATA
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
-pop_pivot_df = pd.read_csv('data/population-data.csv')
+pop_pivot_df = pd.pivot_table(df,index='year', columns='country', values='pop') 
 
 # instantiating the dash app 
 app = Dash()
@@ -25,7 +25,7 @@ dd2 = dcc.Dropdown(df.country.unique(),
 dd3 = dcc.Dropdown(df.year.unique(), 
     2007, 
     placeholder='Select Year...',
-    id='dd-year-sel-2',
+    id='dd-year-sel-1',
 )
 
 
